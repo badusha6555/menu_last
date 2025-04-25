@@ -56,125 +56,30 @@
         .image-overlay:hover {
             background: rgba(255, 107, 129, 0.7);
         }
-     
-    .card-item {
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+        .carousel-container {
+      perspective: 1200px;
+      height: 500px;
+    }
+    .carousel {
       transform-style: preserve-3d;
-      will-change: transform;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      min-width: 280px;
-      max-width: 280px;
-      height: 380px;
-      display: flex;
-      flex-direction: column;
+      transition: transform 1s ease;
     }
-
-    .card-item:hover {
-      transform: rotateY(5deg) scale(1.05);
-      z-index: 10;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(255, 211, 42, 0.5);
-    }
-
-    .card-glow {
-      position: relative;
-    }
-
-    .card-glow::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 1rem;
-      padding: 2px;
-      background: linear-gradient(135deg, #ffd32a, #ff4757);
-      -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-      mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: destination-out;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    .shine {
-      background: linear-gradient(110deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.05) 100%);
-      background-size: 200% 100%;
-      animation: shine 3.5s infinite linear;
-    }
-
-    @keyframes shine {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .carousel-container {
-      display: flex;
-      overflow-x: auto;
-      gap: 1.5rem;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 1.5rem 0.5rem;
-    }
-
-    .carousel-container::-webkit-scrollbar {
-      display: none;
-    }
-
-    .arrow-btn {
+    .carousel-card {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.2);
-      padding: 1rem;
-      border-radius: 50%;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      z-index: 10;
-      transition: all 0.3s ease;
+      left: 50%;
+      transform-style: preserve-3d;
+      transition: transform 1s ease, opacity 1s ease;
     }
+    .glow-card {
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-    .arrow-btn:hover {
-      background: rgba(255, 211, 42, 0.6);
-    }
-
-    .left-arrow {
-      left: 10px;
-    }
-
-    .right-arrow {
-      right: 10px;
-    }
-
-    .menu-section {
-      background: linear-gradient(to bottom, #8d0c0c, #630505);
-      padding: 3rem 0;
-    }
-    
-    .card-img-container {
-      height: 180px;
-      overflow: hidden;
-    }
-    
-    .card-content {
-      padding: 1.25rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .price-tag {
-      background-color: #ffd32a;
-      color: #8d0c0c;
-      padding: 0.25rem 0.75rem;
-      border-radius: 1rem;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: auto;
-    }
+  .glow-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(255, 140, 0, 0.8), 0 0 50px rgba(255, 165, 0, 0.6);
+  }
     </style>
 </head>
 <body class="text-gray-800">
@@ -182,26 +87,16 @@
     <header class="bg-red-600 sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="logo">
-                <img src="images\15-removebg-preview.png" alt="Lucha Libre Taco Shop Logo"
-    class="h-14 md:h-16">
+                <img src="images/15-removebg-preview.png" alt="Lucha Libre Taco Shop Logo" class="h-14 md:h-16">
             </div>
             <nav class="flex items-center">
                 <ul class="hidden md:flex mr-6">
-                    <li><a href="index.html" class="text-white
-    font-semibold text-sm mx-4 hover:text-yellow-300
-    transition-colors">HOME</a></li>
-                    <li><a href="about.html" class="text-white
-    font-semibold text-sm mx-4 hover:text-yellow-300 transition-colors">
-    ABOUT</a></li>
-                    <li><a href="menu.html" class="text-white
-    font-semibold text-sm mx-4 hover:text-yellow-300 transition-colors">
-    MENU</a></li>
-                    <li><a href="contact.html" class="text-white
-    font-semibold text-sm mx-4 hover:text-yellow-300
-    transition-colors">CONTACT US</a></li>
+                    <li><a href="index.html" class="text-white font-semibold text-sm mx-4 hover:text-yellow-300 transition-colors">HOME</a></li>
+                    <li><a href="about.html" class="text-white font-semibold text-sm mx-4 hover:text-yellow-300 transition-colors">ABOUT</a></li>
+                    <li><a href="menu.html" class="text-white font-semibold text-sm mx-4 hover:text-yellow-300 transition-colors">MENU</a></li>
+                    <li><a href="contact.html" class="text-white font-semibold text-sm mx-4 hover:text-yellow-300 transition-colors">CONTACT US</a></li>
                 </ul>
-                <button class="md:hidden ml-4 flex flex-col
-    cursor-pointer" id="mobile-menu-btn">
+                <button class="md:hidden ml-4 flex flex-col cursor-pointer" id="mobile-menu-btn">
                     <span class="w-6 h-0.5 bg-white my-0.5 rounded"></span>
                     <span class="w-6 h-0.5 bg-white my-0.5 rounded"></span>
                     <span class="w-6 h-0.5 bg-white my-0.5 rounded"></span>
@@ -209,27 +104,15 @@
             </nav>
         </div>
         <!-- Mobile Menu (Hidden by default) -->
-        <div class="md:hidden hidden bg-red-600 w-full absolute top-full
-    left-0 p-4 shadow-lg" id="mobile-menu">
-          <ul class="flex flex-col space-y-3">
-            <li><a href="index.html" class="text-white font-semibold
-    text-sm block py-2 hover:text-lucha-pink
-    transition-colors">HOME</a></li>
-            <li><a href="about.html" class="text-white font-semibold
-    text-sm block py-2 hover:text-lucha-pink
-    transition-colors">ABOUT</a></li>
-            <li><a href="menu.html" class="text-white font-semibold
-    text-sm block py-2 hover:text-lucha-pink
-    transition-colors">MENU</a></li>
-            <li><a href="contact.html" class="text-white font-semibold
-    text-sm block py-2 hover:text-lucha-pink transition-colors">CONTACT
-    US</a></li>
-        </ul>
+        <div class="md:hidden hidden bg-red-600 w-full absolute top-full left-0 p-4 shadow-lg" id="mobile-menu">
+            <ul class="flex flex-col space-y-3">
+                <li><a href="index.html" class="text-white font-semibold text-sm block py-2 hover:text-lucha-pink transition-colors">HOME</a></li>
+                <li><a href="about.html" class="text-white font-semibold text-sm block py-2 hover:text-lucha-pink transition-colors">ABOUT</a></li>
+                <li><a href="menu.html" class="text-white font-semibold text-sm block py-2 hover:text-lucha-pink transition-colors">MENU</a></li>
+                <li><a href="contact.html" class="text-white font-semibold text-sm block py-2 hover:text-lucha-pink transition-colors">CONTACT US</a></li>
+            </ul>
         </div>
     </header>
-
-    <!-- Banner -->
-    
 
     <!-- Hero Section -->
     <section class="relative">
@@ -253,277 +136,239 @@
 
     <!-- Quote Section -->
     <section
-    class="relative"
-    style="background-image: url('15.png'), linear-gradient(#8d0c0c, #8d0c0c); background-blend-mode: multiply;"
-    data-aos="fade-in"
-    data-aos-duration="800"
->
-    <div class="w-full h-[100vh] md:h-[100vh] overflow-hidden relative">
-        <!-- Background Image -->
-        <img
-            src="restaurant-hall-with-leather-armchairs-french-windows.jpg"
-            alt="Delicious food on a golden background"
-            class="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105"
-            id="hero-img"
-        >
+        class="relative"
+        style="background-image: url('15.png'), linear-gradient(#8d0c0c, #8d0c0c); background-blend-mode: multiply;"
+        data-aos="fade-in"
+        data-aos-duration="800"
+    >
+        <div class="w-full h-[100vh] md:h-[100vh] overflow-hidden relative">
+            <img
+                src="restaurant-hall-with-leather-armchairs-french-windows.jpg"
+                alt="Delicious food on a golden background"
+                class="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105"
+                id="hero-img"
+            >
+            <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                <div class="bg-black bg-opacity-60 text-white p-8 rounded-lg border-2 w-full max-w-xl md:max-w-2xl lg:max-w-3xl transition-all duration-700 hover:scale-105">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">About Madras Darbar Restaurant</h2>
+                    <p class="text-base md:text-lg lg:text-xl leading-relaxed overflow-auto max-h-[85vh]">
+                        Experience the authentic flavors of India at Madras Darbar Restaurant, a renowned culinary destination in Thailand. With a rich 18-year legacy, we've grown from a humble beginning to three thriving locations, serving the finest non-vegetarian South and North Indian cuisine. 
+                    </p>
+                    <div class="text-center mt-10">
+                        <a href="about.html" class="bg-yellow-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-yellow-400 transition-colors">Know more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Content Box (Centered + Square Shape) -->
-        <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-            <div class="bg-black bg-opacity-60 text-white p-8 rounded-lg border-2 w-full max-w-xl md:max-w-2xl lg:max-w-3xl transition-all duration-700 hover:scale-105">
-                <p class="text-base md:text-lg lg:text-xl leading-relaxed overflow-auto max-h-[85vh]">
-                    We are a family-owned taco shop in San Diego, inspired by the vibrant culture of Mexican wrestling, or Lucha Libre. Our menu features a variety of delicious tacos, burritos, kids' meals, and specialty dishes, all crafted to bring bold flavors to your table. Our atmosphere celebrates the spirit of Lucha Libre, creating an exciting, high-energy vibe. Whether you're a local or just visiting, we invite you to join us for a meal that feels like a victory.
-                </p>
-                <div class="text-center mt-10">
-                    <a href="about.html" class="bg-yellow-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-yellow-400 transition-colors">Know more</a>
-                  </div>
+    <!-- Menu Section -->
+  <!-- Menu Section -->
+  <section class="text-center pt-10 pb-20 max-w-[100vw] overflow-x-hidden relative" style="background-color: #590505;">
+    <h1 class="text-white font-extrabold text-5xl leading-tight">
+    Our Favorite Dishes
+    </h1>
+    <p class="text-white font-semibold text-xl mt-3 max-w-xl mx-auto">
+      We try not to have favorites but we just can't help it!
+    </p>
+  
+    <!-- Wrapper to center carousel -->
+    <div class="flex justify-center mt-12">
+      <div class="relative carousel-container w-full max-w-7xl">
+        <div id="carousel" class="carousel w-full h-full relative">
+          <!-- Cards -->
+          <div class="carousel-card w-64 h-80 bg-white rounded-2xl shadow-xl overflow-hidden glow-card">
+            <img src="./images/deepal-tamang-5oF7d_hPJG4-unsplash.jpg" class="w-full h-48 object-cover" />
+            <div class="p-4 text-center">
+              <h2 class="font-bold text-lg">South Indian</h2>
+              <p class="text-sm text-gray-500">
+                A Taste of Tradition
+              </p>
             </div>
-            
-        </div>
-    </div>
-</section>
-
-
-<!-- Menu Section -->
-<section class="menu-section py-16">
-    <div class="container mx-auto px-4 mb-8 text-center">
-        <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-4">Our Signature Menu</h2>
-        <div class="w-24 h-1 bg-lucha-yellow mx-auto mb-8"></div>
-       
-    </div>
-    
-    <div class="relative w-full max-w-7xl mx-auto px-4 md:px-10">
-        <!-- Arrow buttons -->
-        <div class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10">
-            <button class="arrow-btn left-arrow" id="prevBtn">&#8592;</button>
-        </div>
-        
-        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10">
-            <button class="arrow-btn right-arrow" id="nextBtn">&#8594;</button>
-        </div>
-    
-        <!-- Carousel Container -->
-        <div id="cardTrack" class="carousel-container">
-            <!-- Card 1 -->
-            <div class="card-item card-glow shine rounded-2xl flex-shrink-0">
-                <div class="card-img-container">
-                    <img src="./images/deepal-tamang-5oF7d_hPJG4-unsplash.jpg" alt="South Indian cuisine" class="w-full h-full object-cover rounded-t-2xl" />
-                </div>
-                <div class="card-content">
-                    <h2 class="text-xl font-bold text-white mb-2">South Indian </h2>
-                    <p class="text-sm text-gray-300 mb-4">Crispy rice crepe stuffed with spiced potato filling, served with sambar and chutney</p>
-                    
-                </div>
-            </div>
-    
-            <!-- Card 2 -->
-            <div class="card-item card-glow shine rounded-2xl flex-shrink-0">
-                <div class="card-img-container">
-                    <img src="./images/fusco-studio-fdad5YR-L1I-unsplash.jpg" alt="Soups & Tasty Snacks" class="w-full h-full object-cover rounded-t-2xl" />
-                </div>
-                <div class="card-content">
-                    <h2 class="text-xl font-bold text-white mb-2">Soups & Tasty Snacks</h2>
-                    <p class="text-sm text-gray-300 mb-4">Delicious soups and a variety of snacks to tantalize your taste buds</p>
-                  
-                </div>
-            </div>
-    
-            <!-- Card 3 -->
-            <div class="card-item card-glow shine rounded-2xl flex-shrink-0">
-                <div class="card-img-container">
-                    <img src="./images/pexels-prabal-9609842.jpg" alt="Vegetable Curries" class="w-full h-full object-cover rounded-t-2xl" />
-                </div>
-                <div class="card-content">
-                    <h2 class="text-xl font-bold text-white mb-2">Vegetable Curries</h2>
-                    <p class="text-sm text-gray-300 mb-4">A variety of flavorful vegetable curries, perfect for pairing with rice or bread</p>
-                </div>
-            </div>
-    
-            <!-- Card 4 -->
-            <div class="card-item card-glow shine rounded-2xl flex-shrink-0">
-                <div class="card-img-container">
-                    <img src="./images/pexels-valeriya-28701091.jpg" alt="Fish & Prawn Specials" class="w-full h-full object-cover rounded-t-2xl" />
-                </div>
-                <div class="card-content">
-                    <h2 class="text-xl font-bold text-white mb-2">Fish & Prawn Specials</h2>
-                    <p class="text-sm text-gray-300 mb-4">Succulent prawns cooked in a rich, spicy gravy with traditional spices</p>
-                 
-                </div>
-            </div>
-    
-            <!-- Card 5 -->
-            <div class="card-item card-glow shine rounded-2xl flex-shrink-0">
-                <div class="card-img-container">
-                    <img src="./images/roman-shalkevic-UDRZtw_F_Nc-unsplash.jpg" alt="Egg Dishes" class="w-full h-full object-cover rounded-t-2xl" />
-                </div>
-                <div class="card-content">
-                    <h2 class="text-xl font-bold text-white mb-2">Boiled & Curry Egg Dishes</h2>
-                    <p class="text-sm text-gray-300 mb-4">Soft-boiled eggs or spicy egg curry served with rice or bread</p>
-                   
-                </div>
-            </div>
-    
-            <!-- Card 6 -->
-            <div class="card-item card-glow shine rounded-2xl flex-shrink-0">
-                <div class="card-img-container">
-                    <img src="./images/perspective-studio-DUOpUlw4uLY-unsplash.jpg" alt="Chicken Curries" class="w-full h-full object-cover rounded-t-2xl" />
-                </div>
-                <div class="card-content">
-                    <h2 class="text-xl font-bold text-white mb-2">Chicken Delicacies</h2>
-                    <p class="text-sm text-gray-300 mb-4">Succulent chicken pieces simmered in a flavorful curry sauce with spices and herbs</p>
-                 
-                </div>
-            </div>
-    
-            <!-- Card 7 -->
-            <div class="card-item card-glow shine rounded-2xl flex-shrink-0">
-                <div class="card-img-container">
-                    <img src="./images/nima-naseri-73wOMjMS_Rg-unsplash.jpg" alt="Fish Curry" class="w-full h-full object-cover rounded-t-2xl" />
-                </div>
-                <div class="card-content">
-                    <h2 class="text-xl font-bold text-white mb-2">Lamb & Mutton Treats</h2>
-                    <p class="text-sm text-gray-300 mb-4">Tender lamb and mutton dishes cooked with aromatic spices and herbs</p>
-                </div>
-            </div>
-    
-            <!-- Card 8 -->
-            <div class="card-item card-glow shine rounded-2xl flex-shrink-0">
-                <div class="card-img-container">
-                    <img src="./images/shourav-sheikh-4CeNZ2f_zYk-unsplash.jpg" alt="Chettinad Chicken" class="w-full h-full object-cover rounded-t-2xl" />
-                </div>
-                <div class="card-content">
-                    <h2 class="text-xl font-bold text-white mb-2">Biriyani and Rice</h2>
-                    <p class="text-sm text-gray-300 mb-4">A flavorful rice dish made with aromatic spices and vegetables</p>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-10">
-            <a href="menu.html" class="bg-yellow-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-yellow-400 transition-colors">Know more</a>
           </div>
-    </div>
-</section>
-
-
-
-<!-- Footer -->
-<footer class="py-12 text-white" style="background-color: #e20000;"
-data-aos="fade-up" data-aos-duration="1000">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between mb-10
-space-y-8 md:space-y-0">
-            <div class="md:w-1/3 text-center md:text-left">
-                <img src="15.jpg" alt="" class="h-32 mx-auto
-md:ml-auto md:mr-0 mb-4">
-            </div>
-            <div class="md:w-1/4 text-center md:text-left">
-                <ul class="space-y-2">
-                    <li><a href="contact.html" class="text-gray-100
-hover:text-white transition-colors">Pattaya</a></li>
-                    <li><a href="contact.html" class="text-gray-100
-hover:text-white transition-colors">Bangkok</a></li>
-                    <li><a href="contact.html" class="text-gray-100
-hover:text-white transition-colors">Phuket</a></li>
-                </ul>
-            </div>
-            <div class="md:w-1/3 text-center md:text-left">
-              <h3 class="text-white text-base font-semibold
-mb-4">CONTACT US</h3>
-
-              <p class="text-gray-100 mb-2">
-                <a href="mailto:info@madrasdarbar.org" class="hover:underline">
-                  info@madrasdarbar.org
-                </a>
+          
+          <div class="carousel-card w-64 h-80 bg-white rounded-2xl shadow-xl overflow-hidden glow-card">
+            <img src="./images/fusco-studio-fdad5YR-L1I-unsplash.jpg" class="w-full h-48 object-cover" />
+            <div class="p-4 text-center">
+              <h2 class="font-bold text-lg">Soups and Snacks</h2>
+              <p class="text-sm text-gray-500">
+                Warm, comforting, and perfect for any time of the day.
               </p>
-
-              <p class="text-gray-100 mb-4">
-                <a href="mailto:madrasdarbar@gmail.com" class="hover:underline">
-                  madrasdarbar@gmail.com
-                </a>
-              </p>
-
-              <div class="flex justify-center md:justify-start space-x-4">
-                <a href="https://facebook.com/YOUR_PAGE"
-target="_blank" class="bg-white text-[#e20000] w-10 h-10 rounded-full
-flex items-center justify-center hover:bg-gray-100 transition-colors">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://instagram.com/YOUR_PAGE"
-target="_blank" class="bg-white text-[#e20000] w-10 h-10 rounded-full
-flex items-center justify-center hover:bg-gray-100 transition-colors">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://twitter.com/YOUR_PAGE"
-target="_blank" class="bg-white text-[#e20000] w-10 h-10 rounded-full
-flex items-center justify-center hover:bg-gray-100 transition-colors">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </div>
             </div>
-
+          </div>
+          <div class="carousel-card w-64 h-80 bg-white rounded-2xl shadow-xl overflow-hidden glow-card">
+            <img src="./images/pexels-prabal-9609842.jpg" class="w-full h-48 object-cover" />
+            <div class="p-4 text-center">
+              <h2 class="font-bold text-lg">Vegetable Curries</h2>
+              <p class="text-sm text-gray-500">
+                A Symphony of Flavors
+              </p>
+            </div>
+          </div>
+          <div class="carousel-card w-64 h-80 bg-white rounded-2xl shadow-xl overflow-hidden glow-card">
+            <img src="./images/pexels-valeriya-28701091.jpg" class="w-full h-48 object-cover" />
+            <div class="p-4 text-center">
+              <h2 class="font-bold text-lg">Sea Food</h2>
+              <p class="text-sm text-gray-500">
+                Fresh and Flavorful Sea Food Delight.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-card w-64 h-80 bg-white rounded-2xl shadow-xl overflow-hidden glow-card">
+            <img src="./images/roman-shalkevic-UDRZtw_F_Nc-unsplash.jpg" class="w-full h-48 object-cover" />
+            <div class="p-4 text-center">
+              <h2 class="font-bold text-lg">Egg Curries</h2>
+              <p class="text-sm text-gray-500">
+                Rich, flavorful, and packed with protein, our egg curries are a must-try!
+              </p>
+            </div>
+          </div>
+          <div class="carousel-card w-64 h-80 bg-white rounded-2xl shadow-xl overflow-hidden glow-card">
+            <img src="./images/perspective-studio-DUOpUlw4uLY-unsplash.jpg" class="w-full h-48 object-cover" />
+            <div class="p-4 text-center">
+              <h2 class="font-bold text-lg">Chicken Delights</h2>
+              <p class="text-sm text-gray-500">
+                Tender, juicy, and bursting with flavor, our chicken dishes are a must-try.
+              </p>
+            </div>
+          </div>
         </div>
-
+  
+        <!-- Arrow Buttons -->
+        <button onclick="rotateCarousel(-1)" 
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black text-white text-2xl rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-800">
+          &#8592;
+        </button>
+  
+        <button onclick="rotateCarousel(1)" 
+          class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black text-white text-2xl rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-800">
+          &#8594;
+        </button>
+      </div>
     </div>
-</footer>
+  </section>
+  
 
-<!-- JavaScript -->
-<script>
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const cardTrack = document.getElementById('cardTrack');
+    <!-- Footer -->
+    <footer class="py-12 text-white" style="background-color: #e20000;" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between mb-10 space-y-8 md:space-y-0">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <img src="15.jpg" alt="" class="h-32 mx-auto md:ml-auto md:mr-0 mb-4">
+                </div>
+                <div class="md:w-1/4 text-center md:text-left">
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-100 hover:text-white transition-colors">Pattaya</a></li>
+                        <li><a href="contact.html" class="text-gray-100 hover:text-white transition-colors">Bangkok</a></li>
+                        <li><a href="contact.html" class="text-gray-100 hover:text-white transition-colors">Phuket</a></li>
+                    </ul>
+                </div>
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h3 class="text-white text-base font-semibold mb-4">CONTACT US</h3>
+                    <p class="text-gray-100 mb-2">
+                        <a href="mailto:info@madrasdarbar.org" class="hover:underline">info@madrasdarbar.org</a>
+                    </p>
+                    <p class="text-gray-100 mb-4">
+                        <a href="mailto:madrasdarbar@gmail.com" class="hover:underline">madrasdarbar@gmail.com</a>
+                    </p>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="https://facebook.com/YOUR_PAGE" target="_blank" class="bg-white text-[#e20000] w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/YOUR_PAGE" target="_blank" class="bg-white text-[#e20000] w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/YOUR_PAGE" target="_blank" class="bg-white text-[#e20000] w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    nextBtn.addEventListener('click', () => {
-      cardTrack.scrollBy({
-        left: 300, // Adjust the number to control scroll speed
-        behavior: 'smooth'
-      });
-    });
-
-    prevBtn.addEventListener('click', () => {
-      cardTrack.scrollBy({
-        left: -300, // Adjust the number to control scroll speed
-        behavior: 'smooth'
-      });
-    });
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
     
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+    
+            const heroImg = document.getElementById('hero-img');
+            if (heroImg) {
+                window.addEventListener('scroll', function() {
+                    const scrollPosition = window.scrollY;
+                    if (scrollPosition < 500) {
+                        heroImg.style.transform = `translateY(${scrollPosition * 0.2}px)`;
+                    }
+                });
+            }
+    
+ 
         });
-
-        const heroImg = document.getElementById('hero-img');
-        if (heroImg) {
-            window.addEventListener('scroll', function() {
-                const scrollPosition = window.scrollY;
-                if (scrollPosition < 500) {
-                    heroImg.style.transform = `translateY(${scrollPosition * 0.2}px)`;
-                }
-            });
+    </script>
+     <script>
+        const cards = document.querySelectorAll('.carousel-card');
+        let angle = 0;
+        const totalCards = cards.length;
+        const step = 360 / totalCards;
+        const radius = 400;
+    
+        function updateCarousel() {
+          cards.forEach((card, index) => {
+            const rotation = (index * step + angle) % 360;
+            const rad = rotation * (Math.PI / 180);
+            const x = Math.sin(rad) * radius;
+            const z = Math.cos(rad) * radius;
+    
+            card.style.transform = `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) rotateY(${rotation}deg)`;
+            card.style.opacity = z > 0 ? 1 : 0.4;
+            card.style.zIndex = Math.floor(z);
+          });
         }
+    
+        function rotateCarousel(direction) {
+          angle += step * direction * -1;
+          updateCarousel();
+        }
+    
+        // Initial
+        updateCarousel();
+      </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+  function scrollCarousel(direction) {
+    const carousel = document.getElementById('carousel');
+    const cardWidth = 280; // width + gap (256px card + 24px gap)
+    carousel.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
     });
-</script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-    AOS.init();
+  }
 </script>
 </body>
 </html>
